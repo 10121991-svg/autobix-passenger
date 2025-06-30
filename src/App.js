@@ -11,7 +11,7 @@ function App() {
         {/* Cabeçalho */}
         <header className="bg-black bg-opacity-50 text-white p-4">
           <nav className="container mx-auto flex justify-between items-center">
-            <h1 className="text-2xl font-bold">Urbiix Car</h1>
+            <h1 className="text-2xl font-bold">Autobix</h1>
             <ul className="flex space-x-4">
               <li><Link to="/motorista" className="hover:text-blue-400">Página do motorista</Link></li>
               <li><Link to="/passageiro" className="hover:text-blue-400">Passageiro</Link></li>
@@ -34,12 +34,12 @@ function App() {
           <Route path="/sobre" element={
             <section className="container mx-auto text-center py-20 text-white">
               <h2 className="text-4xl font-bold mb-4">Sobre Nós</h2>
-              <p className="text-xl mb-6">Conheça a história da Urbiix Car!</p>
+              <p className="text-xl mb-6">Conheça a história da Autobix!</p>
             </section>
           } />
           <Route path="/" element={
             <section className="container mx-auto text-center py-20 text-white">
-              <h2 className="text-4xl font-bold mb-4">Urbiix Car</h2>
+              <h2 className="text-4xl font-bold mb-4">Autobix</h2>
               <p className="text-xl mb-6">Escolha como você quer viajar ou trabalhar!</p>
               <div className="flex justify-center space-x-4">
                 <Link to="/passageiro"><button className="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-600">Sou Passageiro</button></Link>
@@ -52,7 +52,7 @@ function App() {
         {/* Seção de Diferenciais */}
         <section className="bg-white bg-opacity-90 py-16">
           <div className="container mx-auto text-center">
-            <h3 className="text-3xl font-bold mb-8">Por que escolher a Urbiix Car?</h3>
+            <h3 className="text-3xl font-bold mb-8">Por que escolher a Autobix?</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div>
                 <h4 className="text-xl font-semibold mb-2">Feito de pessoas para pessoas</h4>
@@ -79,8 +79,8 @@ function App() {
           <h3 className="text-3xl font-bold text-center mb-8">Perguntas Frequentes</h3>
           <div className="space-y-4">
             <div>
-              <h4 className="text-xl font-semibold">O que é a Urbiix Car?</h4>
-              <p>A Urbiix Car conecta motoristas e passageiros com rapidez, conforto e preços justos.</p>
+              <h4 className="text-xl font-semibold">O que é a Autobix?</h4>
+              <p>A Autobix conecta motoristas e passageiros com rapidez, conforto e preços justos.</p>
             </div>
             <div>
               <h4 className="text-xl font-semibold">Como faço para começar a usar o aplicativo?</h4>
@@ -96,13 +96,13 @@ function App() {
         {/* Rodapé */}
         <footer className="bg-black bg-opacity-50 text-white p-8">
           <div className="container mx-auto text-center">
-            <p className="mb-4">Acompanhe a Urbiix Car nas redes sociais!</p>
+            <p className="mb-4">Acompanhe a Autobix nas redes sociais!</p>
             <ul className="flex justify-center space-x-4">
               <li><a href="https://facebook.com" className="hover:text-blue-400">Facebook</a></li>
               <li><a href="https://instagram.com" className="hover:text-blue-400">Instagram</a></li>
               <li><a href="https://twitter.com" className="hover:text-blue-400">Twitter</a></li>
             </ul>
-            <p className="mt-4">Copyright © 2024 Urbiix Car - Todos os direitos reservados.</p>
+            <p className="mt-4">Copyright © 2024 Autobix - Todos os direitos reservados.</p>
           </div>
         </footer>
       </div>
