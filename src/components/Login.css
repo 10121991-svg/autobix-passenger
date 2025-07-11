@@ -10,9 +10,11 @@ body {
 .container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; /* Centraliza horizontalmente */
   height: 100%;
   position: relative; /* Para posicionamento relativo dos filhos */
+  width: 100%; /* Garante ocupação total da largura */
+  padding-left: 150px; /* Espaço para o header-left não sobrepor */
 }
 
 .header-left {
@@ -21,12 +23,12 @@ body {
   left: 20px;
   font-size: 112px; /* 4 vezes o 28px do logo central */
   font-weight: bold;
-  background: linear-gradient(to right, #00ffcc, #007b7f); /* Gradiente mais vibrante */
+  background: linear-gradient(to right, #00ffcc, #007b7f); /* Gradiente vibrante */
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent; /* Torna o texto transparente para usar o gradiente */
   text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5); /* Sombra forte para destaque */
-  z-index: 2; /* Garante que fique acima de outros elementos */
+  z-index: 2; /* Fica acima do login-box */
 }
 
 .login-box {
@@ -36,6 +38,8 @@ body {
   width: 400px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 1; /* Fica abaixo do header-left */
+  margin-left: auto; /* Centraliza com margem ajustada */
+  margin-right: auto; /* Centraliza com margem ajustada */
 }
 
 .logo {
