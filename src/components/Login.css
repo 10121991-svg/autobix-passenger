@@ -15,17 +15,18 @@ body {
   position: relative; /* Para posicionamento relativo dos filhos */
 }
 
-.header-right {
+.header-left {
   position: absolute;
   top: 20px;
-  right: 20px;
-  font-size: 28px;
+  left: 20px;
+  font-size: 112px; /* 4 vezes o 28px do logo central */
   font-weight: bold;
-  background: linear-gradient(to right, #007b7f, #035f63);
+  background: linear-gradient(to right, #00ffcc, #007b7f); /* Gradiente mais vibrante */
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent; /* Torna o texto transparente para usar o gradiente */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Adiciona leve sombra para destaque */
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5); /* Sombra forte para destaque */
+  z-index: 2; /* Garante que fique acima de outros elementos */
 }
 
 .login-box {
@@ -34,7 +35,7 @@ body {
   border-radius: 10px;
   width: 400px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  z-index: 1; /* Garante que fique acima do header-right */
+  z-index: 1; /* Fica abaixo do header-left */
 }
 
 .logo {
