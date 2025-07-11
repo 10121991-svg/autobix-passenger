@@ -14,14 +14,14 @@ body {
   height: 100%;
   position: relative; /* Para posicionamento relativo dos filhos */
   width: 100%; /* Garante ocupação total da largura */
-  padding-left: 150px; /* Espaço para o header-left não sobrepor */
+  padding-left: 150px; /* Espaço para o header-left em telas grandes */
 }
 
 .header-left {
   position: absolute;
   top: 20px;
   left: 20px;
-  font-size: 112px; /* 4 vezes o 28px do logo central */
+  font-size: 112px; /* Tamanho grande para desktop */
   font-weight: bold;
   background: linear-gradient(to right, #00ffcc, #007b7f); /* Gradiente vibrante */
   -webkit-background-clip: text;
@@ -29,6 +29,7 @@ body {
   color: transparent; /* Torna o texto transparente para usar o gradiente */
   text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5); /* Sombra forte para destaque */
   z-index: 2; /* Fica acima do login-box */
+  transition: font-size 0.3s ease; /* Transição suave para redimensionamento */
 }
 
 .login-box {
@@ -40,6 +41,7 @@ body {
   z-index: 1; /* Fica abaixo do header-left */
   margin-left: auto; /* Centraliza com margem ajustada */
   margin-right: auto; /* Centraliza com margem ajustada */
+  max-width: 90%; /* Limita a largura em telas menores */
 }
 
 .logo {
@@ -98,6 +100,7 @@ input {
 
 .qr-section img {
   width: 120px;
+  max-width: 100%; /* Garante que o QR code se ajuste */
 }
 
 .social-icons {
@@ -115,4 +118,45 @@ input {
 .social-icons img {
   width: 20px;
   height: 20px;
+}
+
+/* Media Query para telas menores (ex.: celulares) */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 50px; /* Reduz o espaço para o header-left */
+    flex-direction: column; /* Empilha os elementos verticalmente */
+  }
+
+  .header-left {
+    font-size: 56px; /* Reduz para metade (ainda visível, mas não sobrepõe) */
+    top: 10px;
+    left: 10px;
+  }
+
+  .login-box {
+    width: 80%; /* Ajusta a largura para telas menores */
+    padding: 20px;
+  }
+
+  .logo {
+    font-size: 24px; /* Reduz o tamanho do logo central */
+  }
+
+  .btn {
+    padding: 10px;
+  }
+
+  .qr-section img {
+    width: 100px; /* Reduz o tamanho do QR code */
+  }
+}
+
+@media (max-width: 480px) {
+  .header-left {
+    font-size: 40px; /* Ainda menor para telas muito pequenas */
+  }
+
+  .login-box {
+    width: 90%; /* Ocupa quase toda a largura */
+  }
 }
