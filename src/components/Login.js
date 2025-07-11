@@ -1,9 +1,10 @@
 import React from 'react';
-import './Login.css'; // Criaremos o CSS separadamente
+import './Login.css';
 
 const Login = () => {
   return (
     <div className="container">
+      <div className="header-right">Autobix</div>
       <div className="login-box">
         <div className="logo">Autobix</div>
         <label htmlFor="usuario">Usuário</label>
