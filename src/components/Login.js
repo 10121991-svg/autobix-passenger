@@ -2,30 +2,17 @@ import React, { useState } from 'react';
 import './Login.css';
 
 const Login = () => {
-  const [isLogin, setIsLogin] = useState(true);
   const [userType, setUserType] = useState('passageiro');
-  const [step, setStep] = useState('email'); // 'email' ou 'password'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const handleTabChange = (tab) => {
-    setIsLogin(tab === 'login');
-    setStep('email');
-    setEmail('');
-    setPassword('');
-  };
 
   const handleUserTypeChange = (type) => {
     setUserType(type);
   };
 
-  const handleEmailContinue = () => {
-    if (email) setStep('password');
-  };
-
-  const handleContinue = () => {
+  const handleLogin = () => {
     // Lógica simulada (substituir por chamada API no backend)
-    alert(`Continuando com ${isLogin ? 'Login' : 'Cadastro'} como ${userType} - Email: ${email}, Senha: ${password}`);
+    alert(`Login como ${userType} - Email: ${email}, Senha: ${password}`);
   };
 
   return (
@@ -47,36 +34,26 @@ const Login = () => {
             Motorista
           </button>
         </div>
-        {step === 'email' ? (
-          <>
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Digite seu e-mail"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <button className="btn continue-btn" onClick={handleEmailContinue} disabled={!email}>
-              Continuar com o email
-            </button>
-          </>
-        ) : (
-          <>
-            <label htmlFor="password">Senha</label>
-            <input
-              type="password"
-              id="password"
-              placeholder="Digite sua senha"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <p className="password-hint">Use 8 ou mais letras, números e símbolos</p>
-            <button className="btn continue-btn" onClick={handleContinue} disabled={password.length < 8}>
-              Continuar
-            </button>
-          </>
-        )}
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Digite seu e-mail"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <label htmlFor="password">Senha</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Digite sua senha"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <p className="password-hint">Use 8 ou mais letras, números e símbolos</p>
+        <button className="btn continue-btn" onClick={handleLogin} disabled={password.length < 8 || !email}>
+          Continuar
+        </button>
         <p className="terms">
           Ao continuar, você concorda com os{' '}
           <a href="https://autobix.com.br/termos" target="_blank" rel="noopener noreferrer">
@@ -87,12 +64,6 @@ const Login = () => {
             Política de Privacidade
           </a>
           .
-        </p>
-        <p className="login-link">
-          Já tem uma conta?{' '}
-          <button className="link-btn" onClick={() => handleTabChange('login')}>
-            Entrar
-          </button>
         </p>
         <div className="qr-section">
           <p>Leia o QR Code no navegador do celular</p>

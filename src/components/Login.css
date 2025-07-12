@@ -118,32 +118,6 @@ input {
   text-decoration: underline;
 }
 
-.login-link {
-  text-align: center;
-  margin-top: 15px;
-  font-size: 14px;
-}
-
-.link-btn {
-  background: none;
-  border: none;
-  color: #00ffcc;
-  cursor: pointer;
-  font-size: 14px;
-  text-decoration: underline;
-  padding: 0;
-}
-
-.support {
-  margin-top: 20px;
-  font-size: 14px;
-}
-
-.support a {
-  color: #ffffff;
-  text-decoration: none;
-}
-
 .qr-section {
   text-align: center;
   margin-top: 20px;
@@ -155,6 +129,16 @@ input {
 .qr-section img {
   width: 120px;
   max-width: 100%; /* Garante que o QR code se ajuste */
+}
+
+.support {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.support a {
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .social-icons {
@@ -211,10 +195,6 @@ input {
 
   .terms {
     font-size: 10px;
-  }
-
-  .login-link {
-    font-size: 12px;
   }
 }
 
