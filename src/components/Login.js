@@ -24,13 +24,7 @@ const Login = () => {
         </div>
         <div className="social-icons">
           <a href="#">
-            <img src="https://img.icons8.com/ios-filled/20/ffffff/facebook--v1.png" alt="Facebook" />
-          </a>
-          <a href="#">
             <img src="https://img.icons8.com/ios-filled/20/ffffff/instagram-new.png" alt="Instagram" />
-          </a>
-          <a href="#">
-            <img src="https://img.icons8.com/ios-filled/20/ffffff/linkedin.png" alt="LinkedIn" />
           </a>
         </div>
       </div>
