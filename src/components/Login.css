@@ -45,24 +45,11 @@ body {
   margin-top: 180px; /* Mantém o deslocamento anterior */
 }
 
-.tabs {
-  display: flex;
-  justify-content: space-around;
+.welcome {
+  text-align: center;
+  font-size: 24px;
   margin-bottom: 20px;
-}
-
-.tab {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  cursor: pointer;
-  padding: 10px;
-  border-bottom: 2px solid transparent;
-}
-
-.tab.active {
-  border-bottom: 2px solid #00ffcc;
+  font-weight: bold;
 }
 
 .user-type {
@@ -85,24 +72,11 @@ body {
   background-color: #00cc99;
 }
 
-.gmail-btn {
-  background-color: #d44638; /* Cor típica do Gmail */
-  margin-top: 10px;
-}
-
-.gmail-btn:hover {
-  background-color: #b23126;
-}
-
-.logo {
-  text-align: center;
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 30px;
-}
-
-.logo span {
-  color: #00ffcc;
+.password-hint {
+  font-size: 12px;
+  color: #ccc;
+  margin-top: -10px;
+  margin-bottom: 15px;
 }
 
 label,
@@ -118,19 +92,46 @@ input {
   border-radius: 5px;
 }
 
-.btn {
+.continue-btn {
   background-color: #00cc99;
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 100%;
-  font-weight: bold;
+  margin-top: 10px;
 }
 
-.btn:hover {
+.continue-btn:hover {
   background-color: #00b386;
+}
+
+.continue-btn:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+}
+
+.terms {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 15px;
+  line-height: 1.5;
+}
+
+.terms a {
+  color: #00ffcc;
+  text-decoration: underline;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #00ffcc;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+  padding: 0;
 }
 
 .support {
@@ -186,17 +187,34 @@ input {
     margin-top: 110px; /* Mantém o deslocamento anterior */
   }
 
-  .logo {
-    font-size: 24px; /* Reduz o tamanho do logo central */
+  .welcome {
+    font-size: 20px;
+  }
+
+  .type-btn {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+
+  .password-hint {
+    font-size: 10px;
   }
 
   .btn,
-  .gmail-btn {
+  .continue-btn {
     padding: 10px;
   }
 
   .qr-section img {
     width: 100px; /* Reduz o tamanho do QR code */
+  }
+
+  .terms {
+    font-size: 10px;
+  }
+
+  .login-link {
+    font-size: 12px;
   }
 }
 
