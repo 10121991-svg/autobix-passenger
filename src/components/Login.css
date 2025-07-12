@@ -3,15 +3,14 @@ body {
   font-family: 'Roboto', sans-serif;
   background: linear-gradient(to right, #007b7f, #035f63);
   color: white;
-  height: 100vh;
-  overflow: hidden; /* Evita rolagem indesejada */
+  min-height: 100vh; /* Mantém a altura mínima, mas permite expansão */
+  overflow-y: auto; /* Permite rolagem vertical */
 }
 
 .container {
   display: flex;
   align-items: flex-start; /* Alinha ao topo inicialmente */
   justify-content: center;
-  height: 100%;
   position: relative;
   width: 100%;
   padding: 0;
@@ -43,7 +42,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   max-width: 90%; /* Limita a largura em telas menores */
-  margin-top: 180px; /* Aumenta 30px (3cm aprox.) do ajuste anterior */
+  margin-top: 180px; /* Mantém o deslocamento anterior */
 }
 
 .tabs {
@@ -184,7 +183,7 @@ input {
   .login-box {
     width: 80%; /* Ajusta a largura */
     padding: 20px;
-    margin-top: 110px; /* Aumenta 30px do ajuste anterior */
+    margin-top: 110px; /* Mantém o deslocamento anterior */
   }
 
   .logo {
@@ -208,6 +207,6 @@ input {
 
   .login-box {
     width: 90%; /* Ocupa quase toda a largura */
-    margin-top: 90px; /* Aumenta 30px do ajuste anterior */
+    margin-top: 90px; /* Mantém o deslocamento anterior */
   }
 }
