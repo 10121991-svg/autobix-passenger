@@ -9,18 +9,19 @@ body {
 
 .container {
   display: flex;
-  align-items: center;
-  justify-content: center; /* Centraliza horizontalmente */
+  align-items: flex-start; /* Alinha ao topo inicialmente */
+  justify-content: center;
   height: 100%;
-  position: relative; /* Para posicionamento relativo dos filhos */
-  width: 100%; /* Garante ocupação total da largura */
-  padding-left: 150px; /* Espaço para o header-left em telas grandes */
+  position: relative;
+  width: 100%;
+  padding: 0; /* Remove padding para ajustar ao novo layout */
+  min-height: 100vh; /* Garante altura mínima */
 }
 
 .header-left {
-  position: absolute;
-  top: 20px;
-  left: 20px;
+  position: fixed; /* Fixa no topo da tela */
+  top: 10px;
+  left: 10px;
   font-size: 112px; /* Tamanho grande para desktop */
   font-weight: bold;
   background: linear-gradient(to right, #00ffcc, #007b7f); /* Gradiente vibrante */
@@ -39,9 +40,10 @@ body {
   width: 400px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 1; /* Fica abaixo do header-left */
-  margin-left: auto; /* Centraliza com margem ajustada */
-  margin-right: auto; /* Centraliza com margem ajustada */
+  margin-left: auto;
+  margin-right: auto;
   max-width: 90%; /* Limita a largura em telas menores */
+  margin-top: 150px; /* Desloca para baixo em telas grandes */
 }
 
 .logo {
@@ -122,20 +124,15 @@ input {
 
 /* Media Query para telas menores (ex.: celulares) */
 @media (max-width: 768px) {
-  .container {
-    padding-left: 50px; /* Reduz o espaço para o header-left */
-    flex-direction: column; /* Empilha os elementos verticalmente */
-  }
-
   .header-left {
-    font-size: 56px; /* Reduz para metade (ainda visível, mas não sobrepõe) */
-    top: 10px;
-    left: 10px;
+    font-size: 56px; /* Reduz para metade em tablets/celulares */
+    top: 5px;
   }
 
   .login-box {
-    width: 80%; /* Ajusta a largura para telas menores */
+    width: 80%; /* Ajusta a largura */
     padding: 20px;
+    margin-top: 80px; /* Desloca mais para baixo em telas menores */
   }
 
   .logo {
@@ -158,5 +155,6 @@ input {
 
   .login-box {
     width: 90%; /* Ocupa quase toda a largura */
+    margin-top: 60px; /* Ajusta para telas muito pequenas */
   }
 }
