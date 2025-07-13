@@ -6,8 +6,8 @@ const Login = () => {
   const [userType, setUserType] = useState('passageiro');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [videoUrl, setVideoUrl] = useState(
-    'https://www.youtube.com/embed/dQw4w9WgXcQ' // Exemplo: "Never Gonna Give You Up" (editável)
+  const [videoUrl] = useState(
+    'https://www.youtube.com/embed/8lLhH6P9a-Q' // Exemplo de vídeo comercial genérico (substitua por URL do Itaú se disponível)
   );
 
   const handleTabChange = (tab) => {
@@ -119,22 +119,15 @@ const Login = () => {
           </div>
         </div>
         <div className="video-section">
-          <h2>Vídeo Personalizado</h2>
           <iframe
-            width="300"
-            height="200"
+            width="400"
+            height="300"
             src={videoUrl}
-            title="Vídeo Autobix"
+            title="Comercial Itaú"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
-          <input
-            type="text"
-            placeholder="Insira URL do YouTube (ex.: https://www.youtube.com/embed/...)"
-            value={videoUrl}
-            onChange={(e) => setVideoUrl(e.target.value)}
-          />
         </div>
       </div>
     </div>

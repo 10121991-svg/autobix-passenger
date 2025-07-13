@@ -200,26 +200,12 @@ input {
 }
 
 .video-section {
-  width: 300px;
+  width: 400px;
   margin-top: 180px; /* Alinha com o login-box */
   margin-left: 20px;
-  padding: 20px;
+  padding: 0; /* Remove padding para eliminar espaço desnecessário */
   background: rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  text-align: center;
-}
-
-.video-section h2 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.video-section input {
-  width: 100%;
-  margin-top: 10px;
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
 }
 
 /* Media Query para telas menores (ex.: celulares) */
