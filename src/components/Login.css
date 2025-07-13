@@ -32,6 +32,14 @@ body {
   transition: font-size 0.3s ease; /* Transição suave para redimensionamento */
 }
 
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px; /* Limita a largura total */
+  padding: 0 20px;
+}
+
 .login-box {
   background: rgba(0, 0, 0, 0.2);
   padding: 40px;
@@ -39,9 +47,6 @@ body {
   width: 400px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 1; /* Fica abaixo do header-left */
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 90%; /* Limita a largura em telas menores */
   margin-top: 180px; /* Mantém o deslocamento anterior */
 }
 
@@ -50,6 +55,26 @@ body {
   font-size: 24px;
   margin-bottom: 20px;
   font-weight: bold;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 10px;
+  border-bottom: 2px solid transparent;
+}
+
+.tab.active {
+  border-bottom: 2px solid #00ffcc;
 }
 
 .user-type {
@@ -106,6 +131,22 @@ input {
   cursor: not-allowed;
 }
 
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #00ffcc;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+  padding: 0;
+}
+
 .terms {
   font-size: 12px;
   text-align: center;
@@ -158,11 +199,40 @@ input {
   height: 20px;
 }
 
+.video-section {
+  width: 300px;
+  margin-top: 180px; /* Alinha com o login-box */
+  margin-left: 20px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.video-section h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.video-section input {
+  width: 100%;
+  margin-top: 10px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
 /* Media Query para telas menores (ex.: celulares) */
 @media (max-width: 768px) {
   .header-left {
     font-size: 56px; /* Reduz para metade em tablets/celulares */
     top: 5px;
+  }
+
+  .content-wrapper {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
   }
 
   .login-box {
@@ -171,8 +241,19 @@ input {
     margin-top: 110px; /* Mantém o deslocamento anterior */
   }
 
+  .video-section {
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 0;
+  }
+
   .welcome {
     font-size: 20px;
+  }
+
+  .tab {
+    font-size: 16px;
+    padding: 8px;
   }
 
   .type-btn {
@@ -196,6 +277,10 @@ input {
   .terms {
     font-size: 10px;
   }
+
+  .login-link {
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -206,5 +291,9 @@ input {
   .login-box {
     width: 90%; /* Ocupa quase toda a largura */
     margin-top: 90px; /* Mantém o deslocamento anterior */
+  }
+
+  .video-section {
+    width: 100%;
   }
 }
