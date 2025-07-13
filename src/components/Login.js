@@ -7,7 +7,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [videoUrl] = useState(
-    'https://www.youtube.com/embed/Qv1iX0u4p5s' // Exemplo de vídeo de prosperidade/motivação (substitua por URL específica se desejar)
+    'https://www.youtube.com/embed/dQw4w9WgXcQ' // Exemplo testável (substitua por URL específica se desejar, ex.: motivação)
   );
 
   const handleTabChange = (tab) => {

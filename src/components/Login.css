@@ -204,7 +204,7 @@ input {
   margin-top: 180px; /* Alinha com o login-box */
   margin-left: 20px;
   padding: 0; /* Remove padding para eliminar espaço desnecessário */
-  background: transparent; /* Remove o fundo que parecia marca d'água */
+  background: transparent; /* Remove qualquer fundo que pareça marca d'água */
   border-radius: 0; /* Remove borda para alinhamento */
 }
 
@@ -224,7 +224,7 @@ input {
   .login-box {
     width: 80%; /* Ajusta a largura */
     padding: 20px;
-    margin-top: 110px; /* Mantém o deslocamento anterior */
+    margin-top: 110px; /* Ajusta para rolagem */
   }
 
   .video-section {
@@ -285,7 +285,7 @@ input {
 
   .login-box {
     width: 90%; /* Ocupa quase toda a largura */
-    margin-top: 90px; /* Mantém o deslocamento anterior */
+    margin-top: 90px; /* Ajusta para rolagem */
   }
 
   .video-section {
