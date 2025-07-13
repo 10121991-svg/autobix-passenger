@@ -200,12 +200,12 @@ input {
 }
 
 .video-section {
-  width: 400px;
+  width: 450px;
   margin-top: 180px; /* Alinha com o login-box */
   margin-left: 20px;
   padding: 0; /* Remove padding para eliminar espaço desnecessário */
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
+  background: transparent; /* Remove o fundo que parecia marca d'água */
+  border-radius: 0; /* Remove borda para alinhamento */
 }
 
 /* Media Query para telas menores (ex.: celulares) */
@@ -266,6 +266,15 @@ input {
 
   .login-link {
     font-size: 12px;
+  }
+
+  body {
+    overflow-y: auto; /* Garante rolagem completa */
+    min-height: 0; /* Remove altura mínima fixa */
+  }
+
+  .container {
+    min-height: 100%; /* Ajusta para rolagem total */
   }
 }
 

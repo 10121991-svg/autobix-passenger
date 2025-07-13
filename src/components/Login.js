@@ -7,7 +7,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [videoUrl] = useState(
-    'https://www.youtube.com/embed/8lLhH6P9a-Q' // Exemplo de vídeo comercial genérico (substitua por URL do Itaú se disponível)
+    'https://www.youtube.com/embed/Qv1iX0u4p5s' // Exemplo de vídeo de prosperidade/motivação (substitua por URL específica se desejar)
   );
 
   const handleTabChange = (tab) => {
@@ -120,10 +120,10 @@ const Login = () => {
         </div>
         <div className="video-section">
           <iframe
-            width="400"
-            height="300"
+            width="450"
+            height="350"
             src={videoUrl}
-            title="Comercial Itaú"
+            title="Vídeo de Prosperidade"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
