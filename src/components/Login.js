@@ -6,9 +6,6 @@ const Login = () => {
   const [userType, setUserType] = useState('passageiro');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [videoUrl] = useState(
-    'https://www.youtube.com/embed/dQw4w9WgXcQ' // Exemplo testável (substitua por URL específica se desejar, ex.: motivação)
-  );
 
   const handleTabChange = (tab) => {
     setIsLogin(tab === 'login');
@@ -117,17 +114,6 @@ const Login = () => {
               <img src="https://img.icons8.com/ios-filled/20/ffffff/instagram-new.png" alt="Instagram" />
             </a>
           </div>
-        </div>
-        <div className="video-section">
-          <iframe
-            width="450"
-            height="350"
-            src={videoUrl}
-            title="Vídeo de Prosperidade"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
         </div>
       </div>
     </div>

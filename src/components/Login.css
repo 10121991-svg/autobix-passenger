@@ -34,7 +34,7 @@ body {
 
 .content-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Centraliza o login-box sem vídeo */
   width: 100%;
   max-width: 1200px; /* Limita a largura total */
   padding: 0 20px;
@@ -199,15 +199,6 @@ input {
   height: 20px;
 }
 
-.video-section {
-  width: 450px;
-  margin-top: 180px; /* Alinha com o login-box */
-  margin-left: 20px;
-  padding: 0; /* Remove padding para eliminar espaço desnecessário */
-  background: transparent; /* Remove qualquer fundo que pareça marca d'água */
-  border-radius: 0; /* Remove borda para alinhamento */
-}
-
 /* Media Query para telas menores (ex.: celulares) */
 @media (max-width: 768px) {
   .header-left {
@@ -225,12 +216,6 @@ input {
     width: 80%; /* Ajusta a largura */
     padding: 20px;
     margin-top: 110px; /* Ajusta para rolagem */
-  }
-
-  .video-section {
-    width: 100%;
-    margin-top: 20px;
-    margin-left: 0;
   }
 
   .welcome {
@@ -286,9 +271,5 @@ input {
   .login-box {
     width: 90%; /* Ocupa quase toda a largura */
     margin-top: 90px; /* Ajusta para rolagem */
-  }
-
-  .video-section {
-    width: 100%;
   }
 }
