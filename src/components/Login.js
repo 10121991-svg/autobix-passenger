@@ -45,7 +45,7 @@ const Login = () => {
         }
       );
     }
-  }, [isLoaded]);
+  }, [isLoaded, origin, destination]);
 
   React.useEffect(() => {
     calculateRoute();
@@ -133,10 +133,12 @@ const Login = () => {
           )}
           <p className="terms">
             Ao continuar, você concorda com os{' '}
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a href="https://autobix.com.br/termos" target="_blank" rel="noopener noreferrer">
               Termos de Serviço do Autobix
             </a>{' '}
             e confirma que leu nossa{' '}
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a href="https://autobix.com.br/politica" target="_blank" rel="noopener noreferrer">
               Política de Privacidade
             </a>
