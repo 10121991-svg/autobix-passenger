@@ -131,19 +131,25 @@ const Login = () => {
               </button>
             </p>
           )}
-          <p className="terms">
-            Ao continuar, você concorda com os{' '}
-            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <a href="https://autobix.com.br/termos" target="_blank" rel="noopener noreferrer">
-              Termos de Serviço do Autobix
-            </a>{' '}
-            e confirma que leu nossa{' '}
-            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <a href="https://autobix.com.br/politica" target="_blank" rel="noopener noreferrer">
-              Política de Privacidade
-            </a>
-            .
-          </p>
+       <p className="terms">
+  Ao continuar, você concorda com os{' '}
+  <button
+    className="link-btn"
+    onClick={() => window.open('https://autobix.com.br/termos', '_blank')}
+    style={{ background: 'none', border: 'none', color: '#007bff', cursor: 'pointer', textDecoration: 'underline' }}
+  >
+    Termos de Serviço do Autobix
+  </button>{' '}
+  e confirma que leu nossa{' '}
+  <button
+    className="link-btn"
+    onClick={() => window.open('https://autobix.com.br/politica', '_blank')}
+    style={{ background: 'none', border: 'none', color: '#007bff', cursor: 'pointer', textDecoration: 'underline' }}
+  >
+    Política de Privacidade
+  </button>
+  .
+</p>
           <div className="qr-section">
             <p>Leia o QR Code no navegador do celular</p>
             <img
