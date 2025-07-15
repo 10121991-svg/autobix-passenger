@@ -1,47 +1,56 @@
-import React, { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
+import React from 'react';
+import { GoogleMap, useJsApiLoader, Marker, DirectionsRenderer } from '@react-google-maps/api';
 
-// Ícone padrão para o marcador
-delete L.Icon.Default.prototype._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-});
+const Map = () => {
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+  });
 
-function Map({ userLocation }) {
-  const [position, setPosition] = useState([0, 0]);
+  const containerStyle = {
+    width: '100%',
+    height: '400px',
+  };
 
-  useEffect(() => {
-    // Obter localização do usuário
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          setPosition([pos.coords.latitude, pos.coords.longitude]);
+  const center = {
+    lat: -23.5505, // São Paulo
+    lng: -46.6333,
+  };
+
+  const origin = { lat: -23.5505, lng: -46.6333 }; // Origem: São Paulo
+  const destination = { lat: -22.9068, lng: -43.1729 }; // Destino: Rio de Janeiro
+  const [directions, setDirections] = React.useState(null);
+
+  React.useEffect(() => {
+    if (isLoaded) {
+      const directionsService = new window.google.maps.DirectionsService();
+      directionsService.route(
+        {
+          origin: origin,
+          destination: destination,
+          travelMode: window.google.maps.TravelMode.DRIVING,
         },
-        (err) => {
-          console.error('Erro ao obter localização:', err);
-          setPosition([-23.5505, -46.6333]); // São Paulo como padrão
+        (result, status) => {
+          if (status === window.google.maps.DirectionsStatus.OK) {
+            setDirections(result);
+          } else {
+            console.error('Erro ao calcular rota:', status);
+          }
         }
       );
-    } else {
-      setPosition([-23.5505, -46.6333]); // Fallback
     }
-  }, []);
+  }, [isLoaded]);
 
-  return (
-    <MapContainer center={position} zoom={13} style={{ height: '400px', width: '100%' }}>
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      />
-      <Marker position={position}>
-        <Popup>Sua localização</Popup>
-      </Marker>
-    </MapContainer>
-  );
-}
+  return isLoaded ? (
+    <GoogleMap
+      mapContainerStyle={containerStyle}
+      center={center}
+      zoom={10}
+    >
+      {directions && <DirectionsRenderer directions={directions} />}
+      <Marker position={center} />
+    </GoogleMap>
+  ) : <div>Carregando mapa...</div>;
+};
 
 export default Map;
