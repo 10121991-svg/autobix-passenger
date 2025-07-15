@@ -45,7 +45,7 @@ const Login = () => {
         }
       );
     }
-  }, [isLoaded]);
+  }, [isLoaded, origin, destination]); // Adicionado origin e destination para satisfazer o ESLint
 
   React.useEffect(() => {
     calculateRoute();
