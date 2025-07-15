@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import './Login.css';
 import { GoogleMap, useJsApiLoader, DirectionsRenderer } from '@react-google-maps/api';
 
@@ -24,8 +24,8 @@ const Login = () => {
     lng: -46.6333,
   };
 
-  const origin = { lat: -23.5505, lng: -46.6333 }; // Origem: São Paulo
-  const destination = { lat: -22.9068, lng: -43.1729 }; // Destino: Rio de Janeiro
+  const origin = useMemo(() => ({ lat: -23.5505, lng: -46.6333 }), []); // Origem: São Paulo
+  const destination = useMemo(() => ({ lat: -22.9068, lng: -43.1729 }), []); // Destino: Rio de Janeiro
 
   const calculateRoute = useCallback(() => {
     if (isLoaded) {
@@ -45,7 +45,7 @@ const Login = () => {
         }
       );
     }
-  }, [isLoaded, origin, destination]);
+  }, [isLoaded]);
 
   React.useEffect(() => {
     calculateRoute();
