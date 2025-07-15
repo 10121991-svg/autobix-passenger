@@ -1,11 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import './Login.css';
+import { GoogleMap, useJsApiLoader, DirectionsRenderer } from '@react-google-maps/api';
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [userType, setUserType] = useState('passageiro');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [directions, setDirections] = useState(null);
+
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+  });
+
+  const containerStyle = {
+    width: '450px',
+    height: '350px',
+  };
+
+  const center = {
+    lat: -23.5505, // Exemplo: São Paulo
+    lng: -46.6333,
+  };
+
+  const origin = { lat: -23.5505, lng: -46.6333 }; // Origem: São Paulo
+  const destination = { lat: -22.9068, lng: -43.1729 }; // Destino: Rio de Janeiro
+
+  const calculateRoute = useCallback(() => {
+    if (isLoaded) {
+      const directionsService = new window.google.maps.DirectionsService();
+      directionsService.route(
+        {
+          origin: origin,
+          destination: destination,
+          travelMode: window.google.maps.TravelMode.DRIVING,
+        },
+        (result, status) => {
+          if (status === window.google.maps.DirectionsStatus.OK) {
+            setDirections(result);
+          } else {
+            console.error('Erro ao calcular rota:', status);
+          }
+        }
+      );
+    }
+  }, [isLoaded]);
+
+  React.useEffect(() => {
+    calculateRoute();
+  }, [calculateRoute]);
 
   const handleTabChange = (tab) => {
     setIsLogin(tab === 'login');
@@ -18,7 +62,6 @@ const Login = () => {
   };
 
   const handleContinue = () => {
-    // Lógica simulada (substituir por chamada API no backend)
     alert(`${isLogin ? 'Login' : 'Cadastro'} como ${userType} - Email: ${email}, Senha: ${password}`);
   };
 
@@ -115,6 +158,17 @@ const Login = () => {
             </a>
           </div>
         </div>
+        {isLoaded && (
+          <div className="map-section">
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              center={center}
+              zoom={10}
+            >
+              {directions && <DirectionsRenderer directions={directions} />}
+            </GoogleMap>
+          </div>
+        )}
       </div>
     </div>
   );

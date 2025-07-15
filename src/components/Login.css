@@ -3,40 +3,40 @@ body {
   font-family: 'Roboto', sans-serif;
   background: linear-gradient(to right, #007b7f, #035f63);
   color: white;
-  min-height: 100vh; /* Mantém a altura mínima, mas permite expansão */
-  overflow-y: auto; /* Permite rolagem vertical */
+  min-height: 100vh;
+  overflow-y: auto;
 }
 
 .container {
   display: flex;
-  align-items: flex-start; /* Alinha ao topo inicialmente */
+  align-items: flex-start;
   justify-content: center;
   position: relative;
   width: 100%;
   padding: 0;
-  min-height: 100vh; /* Garante altura mínima */
+  min-height: 100vh;
 }
 
 .header-left {
-  position: fixed; /* Fixa no topo da tela */
+  position: fixed;
   top: 10px;
   left: 10px;
-  font-size: 112px; /* Tamanho grande para desktop */
+  font-size: 112px;
   font-weight: bold;
-  background: linear-gradient(to right, #00ffcc, #007b7f); /* Gradiente vibrante */
+  background: linear-gradient(to right, #00ffcc, #007b7f);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent; /* Torna o texto transparente para usar o gradiente */
-  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5); /* Sombra forte para destaque */
-  z-index: 2; /* Fica acima do login-box */
-  transition: font-size 0.3s ease; /* Transição suave para redimensionamento */
+  color: transparent;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  transition: font-size 0.3s ease;
 }
 
 .content-wrapper {
   display: flex;
-  justify-content: center; /* Centraliza o login-box sem vídeo */
+  justify-content: space-between;
   width: 100%;
-  max-width: 1200px; /* Limita a largura total */
+  max-width: 1200px;
   padding: 0 20px;
 }
 
@@ -46,8 +46,8 @@ body {
   border-radius: 10px;
   width: 400px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  z-index: 1; /* Fica abaixo do header-left */
-  margin-top: 180px; /* Mantém o deslocamento anterior */
+  z-index: 1;
+  margin-top: 180px;
 }
 
 .welcome {
@@ -164,12 +164,12 @@ input {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza o QR code */
+  align-items: center;
 }
 
 .qr-section img {
   width: 120px;
-  max-width: 100%; /* Garante que o QR code se ajuste */
+  max-width: 100%;
 }
 
 .support {
@@ -199,10 +199,16 @@ input {
   height: 20px;
 }
 
-/* Media Query para telas menores (ex.: celulares) */
+.map-section {
+  width: 450px;
+  margin-top: 180px;
+  margin-left: 20px;
+  background: transparent;
+}
+
 @media (max-width: 768px) {
   .header-left {
-    font-size: 56px; /* Reduz para metade em tablets/celulares */
+    font-size: 56px;
     top: 5px;
   }
 
@@ -213,9 +219,15 @@ input {
   }
 
   .login-box {
-    width: 80%; /* Ajusta a largura */
+    width: 80%;
     padding: 20px;
-    margin-top: 110px; /* Ajusta para rolagem */
+    margin-top: 110px;
+  }
+
+  .map-section {
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 0;
   }
 
   .welcome {
@@ -242,7 +254,7 @@ input {
   }
 
   .qr-section img {
-    width: 100px; /* Reduz o tamanho do QR code */
+    width: 100px;
   }
 
   .terms {
@@ -254,22 +266,26 @@ input {
   }
 
   body {
-    overflow-y: auto; /* Garante rolagem completa */
-    min-height: 0; /* Remove altura mínima fixa */
+    overflow-y: auto;
+    min-height: 0;
   }
 
   .container {
-    min-height: 100%; /* Ajusta para rolagem total */
+    min-height: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .header-left {
-    font-size: 40px; /* Ainda menor para telas muito pequenas */
+    font-size: 40px;
   }
 
   .login-box {
-    width: 90%; /* Ocupa quase toda a largura */
-    margin-top: 90px; /* Ajusta para rolagem */
+    width: 90%;
+    margin-top: 90px;
+  }
+
+  .map-section {
+    width: 100%;
   }
 }
