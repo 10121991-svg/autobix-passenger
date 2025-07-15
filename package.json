@@ -8,7 +8,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^0.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,7 +22,18 @@
       "plugin:jsx-a11y/recommended"
     ],
     "rules": {
-      "jsx-a11y/anchor-is-valid": ["warn", { "components": ["a"], "specialLink": ["to"] }]
+      "react-hooks/exhaustive-deps": "warn",
+      "jsx-a11y/anchor-is-valid": [
+        "warn",
+        {
+          "components": [
+            "a"
+          ],
+          "specialLink": [
+            "to"
+          ]
+        }
+      ]
     }
   },
   "browserslist": {
