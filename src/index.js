@@ -10,6 +10,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// Opcional: Descomente e ajuste se quiser usar reportWebVitals
-// import reportWebVitals from './reportWebVitals';
-// reportWebVitals();
+// Removido reportWebVitals pois não é essencial
