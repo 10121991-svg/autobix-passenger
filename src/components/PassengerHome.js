@@ -1,13 +1,40 @@
-import React, { useState } from 'react';
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import React, { useState, useEffect } from 'react'; // Corrigido para importar hooks diretamente
+import { MapContainer, TileLayer, Marker, Polyline } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import { useNavigate } from 'react-router-dom';
 
 const PassengerHome = () => {
   const [destination, setDestination] = useState('');
+  const [route, setRoute] = useState(null);
+  const apiKey = 'SUA_API_KEY_AQUI'; // Substitua pela chave válida
+  const navigate = useNavigate();
 
-  const handleSearch = () => {
-    alert(`Procurando destino: ${destination}`);
-    // Lógica de busca futura com OpenRouteService
+  const handleSearch = async () => {
+    if (!destination) return alert('Digite um destino!');
+    const start = '-23.5505,-46.6333';
+    const end = encodeURIComponent(destination);
+    try {
+      const response = await fetch(
+        `https://api.openrouteservice.org/v2/directions/driving-car?api_key=${apiKey}&start=${start}&end=${end}`,
+        { headers: { 'Authorization': apiKey } }
+      );
+      const data = await response.json();
+      if (data.features && data.features.length > 0) {
+        const coordinates = data.features[0].geometry.coordinates.map(([lng, lat]) => [lat, lng]);
+        setRoute(coordinates);
+      } else {
+        alert('Rota não encontrada!');
+      }
+    } catch (error) {
+      console.error('Erro na API:', error);
+      alert('Erro ao buscar rota: ' + error.message);
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('userType');
+    navigate('/');
   };
 
   return (
@@ -19,12 +46,15 @@ const PassengerHome = () => {
           <input
             type="text"
             id="destination"
-            placeholder="Digite o destino"
+            placeholder="Digite o destino (ex.: -22.9068,-43.1729)"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
           />
           <button className="btn continue-btn" onClick={handleSearch}>
             Buscar
+          </button>
+          <button className="btn continue-btn" onClick={handleLogout} style={{ marginTop: '10px' }}>
+            Sair
           </button>
         </div>
         <div className="map-section">
@@ -34,6 +64,7 @@ const PassengerHome = () => {
               attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
             <Marker position={[-23.5505, -46.6333]} />
+            {route && <Polyline positions={route} color="blue" />}
           </MapContainer>
         </div>
       </div>

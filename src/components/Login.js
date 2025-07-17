@@ -7,12 +7,14 @@ const Login = () => {
   const [userType, setUserType] = useState('passageiro');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [whatsapp, setWhatsapp] = useState(''); // Novo campo para WhatsApp
   const navigate = useNavigate();
 
   const handleTabChange = (tab) => {
     setIsLogin(tab === 'login');
     setEmail('');
     setPassword('');
+    setWhatsapp(''); // Limpa o WhatsApp ao mudar aba
   };
 
   const handleUserTypeChange = (type) => {
@@ -20,12 +22,12 @@ const Login = () => {
   };
 
   const handleContinue = () => {
-    if (password.length >= 8 && email) {
+    if (password.length >= 8 && (email || whatsapp)) {
       localStorage.setItem('isAuthenticated', 'true');
       localStorage.setItem('userType', userType);
       navigate('/passenger-home');
     } else {
-      alert('Preencha e-mail e senha com pelo menos 8 caracteres!');
+      alert('Preencha e-mail ou WhatsApp e senha com pelo menos 8 caracteres!');
     }
   };
 
@@ -63,14 +65,22 @@ const Login = () => {
               Motorista
             </button>
           </div>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email ou WhatsApp</label>
           <input
-            type="email"
+            type="text"
             id="email"
-            placeholder="Digite seu e-mail"
+            placeholder={isLogin ? 'Digite seu e-mail ou WhatsApp' : 'Digite seu e-mail'}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          {!isLogin && (
+            <input
+              type="text"
+              placeholder="Digite seu WhatsApp (ex.: +5511999999999)"
+              value={whatsapp}
+              onChange={(e) => setWhatsapp(e.target.value)}
+            />
+          )}
           <label htmlFor="password">Senha</label>
           <input
             type="password"
@@ -79,11 +89,13 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <p className="password-hint">Use 8 ou mais letras, números e símbolos</p>
+          {!isLogin && (
+            <p className="password-hint">Use 8 ou mais letras, números e símbolos</p>
+          )}
           <button
             className="btn continue-btn"
             onClick={handleContinue}
-            disabled={!email || password.length < 8}
+            disabled={!email && !whatsapp || password.length < 8}
           >
             {isLogin ? 'Entrar' : 'Cadastrar'}
           </button>
