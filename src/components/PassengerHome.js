@@ -1,33 +1,44 @@
 import React, { useState } from 'react';
+import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 
-function PassengerHome() {
-  const [message, setMessage] = useState('');
+const PassengerHome = () => {
+  const [destination, setDestination] = useState('');
 
-  const handleRequestRide = async () => {
-    try {
-      const response = await fetch('https://urbiix-backend.onrender.com/api/passageiro/viagem', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userId: 'exemplo' })
-      });
-      const data = await response.json();
-      setMessage(data.message || 'Corrida solicitada!');
-    } catch (error) {
-      setMessage('Erro ao solicitar corrida.');
-    }
+  const handleSearch = () => {
+    alert(`Procurando destino: ${destination}`);
+    // Lógica de busca futura com OpenRouteService
   };
 
   return (
-    <section className="container mx-auto text-center py-20 text-white">
-      <h2 className="text-4xl font-bold mb-4">Segurança, Respeito e Confiança</h2>
-      <p className="text-xl mb-6">Autobix: seu carro na palma da mão, sem complicação! Vem pra revolução!</p>
-      <div className="flex justify-center space-x-4">
-        <button onClick={handleRequestRide} className="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-600">Quero pedir um Autobix!</button>
-        <button className="bg-green-500 text-white px-6 py-3 rounded hover:bg-green-600">Quero ser um Motorista</button>
+    <div className="container">
+      <div className="header-left">Autobix - Passageiro</div>
+      <div className="content-wrapper">
+        <div className="search-box">
+          <label htmlFor="destination">Destino</label>
+          <input
+            type="text"
+            id="destination"
+            placeholder="Digite o destino"
+            value={destination}
+            onChange={(e) => setDestination(e.target.value)}
+          />
+          <button className="btn continue-btn" onClick={handleSearch}>
+            Buscar
+          </button>
+        </div>
+        <div className="map-section">
+          <MapContainer center={[-23.5505, -46.6333]} zoom={10} style={{ height: '350px', width: '450px' }}>
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            />
+            <Marker position={[-23.5505, -46.6333]} />
+          </MapContainer>
+        </div>
       </div>
-      {message && <p className="mt-4">{message}</p>}
-    </section>
+    </div>
   );
-}
+};
 
 export default PassengerHome;

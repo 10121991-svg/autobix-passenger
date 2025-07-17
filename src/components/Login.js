@@ -1,55 +1,13 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
-import { GoogleMap, useJsApiLoader, DirectionsRenderer } from '@react-google-maps/api';
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [userType, setUserType] = useState('passageiro');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [directions, setDirections] = useState(null);
-
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-  });
-
-  const containerStyle = {
-    width: '450px',
-    height: '350px',
-  };
-
-  const center = {
-    lat: -23.5505, // Exemplo: São Paulo
-    lng: -46.6333,
-  };
-
-  const origin = useMemo(() => ({ lat: -23.5505, lng: -46.6333 }), []); // Origem: São Paulo
-  const destination = useMemo(() => ({ lat: -22.9068, lng: -43.1729 }), []); // Destino: Rio de Janeiro
-
-  const calculateRoute = useCallback(() => {
-    if (isLoaded) {
-      const directionsService = new window.google.maps.DirectionsService();
-      directionsService.route(
-        {
-          origin: origin,
-          destination: destination,
-          travelMode: window.google.maps.TravelMode.DRIVING,
-        },
-        (result, status) => {
-          if (status === window.google.maps.DirectionsStatus.OK) {
-            setDirections(result);
-          } else {
-            console.error('Erro ao calcular rota:', status);
-          }
-        }
-      );
-    }
-  }, [isLoaded, origin, destination]);
-
-  React.useEffect(() => {
-    calculateRoute();
-  }, [calculateRoute]);
+  const navigate = useNavigate();
 
   const handleTabChange = (tab) => {
     setIsLogin(tab === 'login');
@@ -62,7 +20,13 @@ const Login = () => {
   };
 
   const handleContinue = () => {
-    alert(`${isLogin ? 'Login' : 'Cadastro'} como ${userType} - Email: ${email}, Senha: ${password}`);
+    if (password.length >= 8 && email) {
+      localStorage.setItem('isAuthenticated', 'true');
+      localStorage.setItem('userType', userType);
+      navigate('/passenger-home');
+    } else {
+      alert('Preencha e-mail e senha com pelo menos 8 caracteres!');
+    }
   };
 
   return (
@@ -119,7 +83,7 @@ const Login = () => {
           <button
             className="btn continue-btn"
             onClick={handleContinue}
-            disabled={password.length < 8 || !email}
+            disabled={!email || password.length < 8}
           >
             {isLogin ? 'Entrar' : 'Cadastrar'}
           </button>
@@ -158,7 +122,7 @@ const Login = () => {
             />
           </div>
           <div className="support">
-            Suporte: <a href="https://wa.me/5511991075415">(11) 99107-5415</a>
+            Suporte: <button style={{ background: 'none', border: 'none', color: '#007bff', cursor: 'pointer' }} onClick={() => window.open('https://wa.me/5511991075415')}> (11) 99107-5415</button>
           </div>
           <div className="social-icons">
             <a href="#">
@@ -166,17 +130,6 @@ const Login = () => {
             </a>
           </div>
         </div>
-        {isLoaded && (
-          <div className="map-section">
-            <GoogleMap
-              mapContainerStyle={containerStyle}
-              center={center}
-              zoom={10}
-            >
-              {directions && <DirectionsRenderer directions={directions} />}
-            </GoogleMap>
-          </div>
-        )}
       </div>
     </div>
   );
