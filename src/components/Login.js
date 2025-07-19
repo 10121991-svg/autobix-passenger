@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; // Importação correta de useState
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
@@ -7,14 +7,14 @@ const Login = () => {
   const [userType, setUserType] = useState('passageiro');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [whatsapp, setWhatsapp] = useState(''); // Novo campo para WhatsApp
+  const [whatsapp, setWhatsapp] = useState('');
   const navigate = useNavigate();
 
   const handleTabChange = (tab) => {
     setIsLogin(tab === 'login');
     setEmail('');
     setPassword('');
-    setWhatsapp(''); // Limpa o WhatsApp ao mudar aba
+    setWhatsapp('');
   };
 
   const handleUserTypeChange = (type) => {
@@ -74,12 +74,15 @@ const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           {!isLogin && (
-            <input
-              type="text"
-              placeholder="Digite seu WhatsApp (ex.: +5511999999999)"
-              value={whatsapp}
-              onChange={(e) => setWhatsapp(e.target.value)}
-            />
+            <div>
+              <input
+                type="text"
+                placeholder="Digite seu WhatsApp (ex.: +5511999999999)"
+                value={whatsapp}
+                onChange={(e) => setWhatsapp(e.target.value)}
+                style={{ marginTop: '10px' }}
+              />
+            </div>
           )}
           <label htmlFor="password">Senha</label>
           <input
