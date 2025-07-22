@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; // Importação correta
+import React, { useState } from 'react'; // Removido useEffect
 import { MapContainer, TileLayer, Marker, Polyline } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useNavigate } from 'react-router-dom';

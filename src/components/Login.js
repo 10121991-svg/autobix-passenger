@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; // Importação correta de useState
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
@@ -98,7 +98,7 @@ const Login = () => {
           <button
             className="btn continue-btn"
             onClick={handleContinue}
-            disabled={!email && !whatsapp || password.length < 8}
+            disabled={(!email && !whatsapp) || password.length < 8}
           >
             {isLogin ? 'Entrar' : 'Cadastrar'}
           </button>
@@ -112,21 +112,13 @@ const Login = () => {
           )}
           <p className="terms">
             Ao continuar, você concorda com os{' '}
-            <button
-              className="link-btn"
-              onClick={() => window.open('https://autobix.com.br/termos', '_blank')}
-              style={{ background: 'none', border: 'none', color: '#007bff', cursor: 'pointer', textDecoration: 'underline' }}
-            >
+            <a href="https://autobix.com.br/termos" target="_blank" rel="noopener noreferrer" className="link-btn">
               Termos de Serviço do Autobix
-            </button>{' '}
+            </a>{' '}
             e confirma que leu nossa{' '}
-            <button
-              className="link-btn"
-              onClick={() => window.open('https://autobix.com.br/politica', '_blank')}
-              style={{ background: 'none', border: 'none', color: '#007bff', cursor: 'pointer', textDecoration: 'underline' }}
-            >
+            <a href="https://autobix.com.br/politica" target="_blank" rel="noopener noreferrer" className="link-btn">
               Política de Privacidade
-            </button>
+            </a>
             .
           </p>
           <div className="qr-section">
@@ -137,7 +129,7 @@ const Login = () => {
             />
           </div>
           <div className="support">
-            Suporte: <button style={{ background: 'none', border: 'none', color: '#007bff', cursor: 'pointer' }} onClick={() => window.open('https://wa.me/5511991075415')}> (11) 99107-5415</button>
+            Suporte: <a href="https://wa.me/5511991075415" target="_blank" rel="noopener noreferrer" style={{ background: 'none', border: 'none', color: '#007bff', cursor: 'pointer' }}> (11) 99107-5415</a>
           </div>
           <div className="social-icons">
             <a href="#">
