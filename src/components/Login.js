@@ -129,10 +129,10 @@ const Login = () => {
             />
           </div>
           <div className="support">
-            Suporte: <a href="https://wa.me/5511991075415" target="_blank" rel="noopener noreferrer" style={{ background: 'none', border: 'none', color: '#007bff', cursor: 'pointer' }}> (11) 99107-5415</a>
+            Suporte: <a href="https://wa.me/5511991075415" target="_blank" rel="noopener noreferrer" style={{ background: 'none', border: 'none', color: '#007bff', cursor: 'pointer' }}>(11) 99107-5415</a>
           </div>
           <div className="social-icons">
-            <a href="#">
+            <a href="https://www.instagram.com/autobix_oficial/" target="_blank" rel="noopener noreferrer">
               <img src="https://img.icons8.com/ios-filled/20/ffffff/instagram-new.png" alt="Instagram" />
             </a>
           </div>
