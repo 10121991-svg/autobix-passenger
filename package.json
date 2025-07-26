@@ -2,7 +2,7 @@
   "name": "passageiro-autobix",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://autobix-passenger.vercel.app",
   "dependencies": {
     "leaflet": "^1.9.4",
     "react": "^18.3.1",
