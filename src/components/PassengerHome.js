@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; // Removido useEffect
+import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Polyline } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useNavigate } from 'react-router-dom';
@@ -6,18 +6,27 @@ import { useNavigate } from 'react-router-dom';
 const PassengerHome = () => {
   const [destination, setDestination] = useState('');
   const [route, setRoute] = useState(null);
-  const apiKey = 'SUA_API_KEY_AQUI'; // Substitua pela chave válida
+  const apiKey = process.env.REACT_APP_OPENROUTE_API_KEY;
   const navigate = useNavigate();
 
   const handleSearch = async () => {
-    if (!destination) return alert('Digite um destino!');
+    if (!apiKey) {
+      alert('Chave da API não configurada! Contate o administrador.');
+      return;
+    }
+    if (!destination) {
+      alert('Digite um destino!');
+      return;
+    }
     const start = '-23.5505,-46.6333';
     const end = encodeURIComponent(destination);
     try {
       const response = await fetch(
-        `https://api.openrouteservice.org/v2/directions/driving-car?api_key=${apiKey}&start=${start}&end=${end}`,
-        { headers: { 'Authorization': apiKey } }
+        `https://api.openrouteservice.org/v2/directions/driving-car?api_key=${apiKey}&start=${start}&end=${end}`
       );
+      if (!response.ok) {
+        throw new Error(`Erro na API: ${response.statusText}`);
+      }
       const data = await response.json();
       if (data.features && data.features.length > 0) {
         const coordinates = data.features[0].geometry.coordinates.map(([lng, lat]) => [lat, lng]);
