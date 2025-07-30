@@ -15,10 +15,10 @@ const PassengerHome = () => {
       return;
     }
     if (!destination) {
-      alert('Digite um destino!');
+      alert('Digite um destino! Exemplo: -23.5617,-46.6250');
       return;
     }
-    const start = '-23.5505,-46.6333';
+    const start = '-23.5505,-46.6333'; // São Paulo (centro)
     const end = encodeURIComponent(destination);
     try {
       const response = await fetch(
@@ -32,7 +32,7 @@ const PassengerHome = () => {
         const coordinates = data.features[0].geometry.coordinates.map(([lng, lat]) => [lat, lng]);
         setRoute(coordinates);
       } else {
-        alert('Rota não encontrada!');
+        alert('Rota não encontrada! Verifique as coordenadas.');
       }
     } catch (error) {
       console.error('Erro na API:', error);
@@ -55,7 +55,7 @@ const PassengerHome = () => {
           <input
             type="text"
             id="destination"
-            placeholder="Digite o destino (ex.: -22.9068,-43.1729)"
+            placeholder="Digite o destino (ex.: -23.5617,-46.6250)"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
           />
