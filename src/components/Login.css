@@ -16,7 +16,8 @@ body {
 .logo {
   position: absolute;
   top: 20px;
-  left: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 36px;
   font-weight: bold;
   text-transform: uppercase;
@@ -34,6 +35,48 @@ body {
   border-radius: 10px;
   width: 400px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.tab.active {
+  background-color: #00cc99;
+  border-radius: 5px;
+}
+
+.tab:hover {
+  background-color: #00b386;
+}
+
+.user-type {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.user-type label {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.user-type input {
+  margin-right: 8px;
 }
 
 label,
