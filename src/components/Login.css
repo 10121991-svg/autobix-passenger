@@ -10,6 +10,22 @@ body {
   height: 100vh;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 36px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.logo span {
+  color: #00ffcc;
 }
 
 .login-box {
@@ -18,17 +34,6 @@ body {
   border-radius: 10px;
   width: 400px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.logo {
-  text-align: center;
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 30px;
-}
-
-.logo span {
-  color: #00ffcc;
 }
 
 label,
@@ -67,15 +72,6 @@ input {
 .support a {
   color: #ffffff;
   text-decoration: none;
-}
-
-.qr-section {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.qr-section img {
-  width: 120px;
 }
 
 .social-icons {

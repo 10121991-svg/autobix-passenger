@@ -20,10 +20,8 @@ const Login = () => {
 
   return (
     <div className="container">
+      <div className="logo">Auto<span>bix</span></div>
       <div className="login-box">
-        <div className="logo">
-          Autobix <span></span>
-        </div>
         <form onSubmit={handleLogin}>
           <label htmlFor="usuario">Usuário</label>
           <input
@@ -45,25 +43,12 @@ const Login = () => {
             Entrar
           </button>
         </form>
-        <div className="qr-section">
-          <p>Leia o QR Code no navegador do celular</p>
-          <img
-            src="https://api.qrserver.com/v1/create-qr-code/?data=https://autobix.com.br&size=120x120"
-            alt="QR Code"
-          />
-        </div>
         <div className="support">
           Suporte: <a href="https://wa.me/5511991075415">(11) 99107-5415</a>
         </div>
         <div className="social-icons">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-            <img src="https://img.icons8.com/ios-filled/20/ffffff/facebook--v1.png" alt="Facebook" />
-          </a>
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
             <img src="https://img.icons8.com/ios-filled/20/ffffff/instagram-new.png" alt="Instagram" />
-          </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-            <img src="https://img.icons8.com/ios-filled/20/ffffff/linkedin.png" alt="LinkedIn" />
           </a>
         </div>
       </div>
