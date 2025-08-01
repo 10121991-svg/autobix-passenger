@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'; // Crie este arquivo para o CSS
+import './Login.css';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [usuario, setUsuario] = useState('');
+  const [senha, setSenha] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Simulação de autenticação
-    if (email && password) {
+    if (usuario && senha) {
       localStorage.setItem('isAuthenticated', 'true');
       localStorage.setItem('userType', 'passenger');
       navigate('/passenger-home');
@@ -20,34 +19,42 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
+    <div className="container">
       <div className="login-box">
-        <h1>Autobix - Login</h1>
+        <div className="logo">
+          Autobix <span></span>
+        </div>
         <form onSubmit={handleLogin}>
-          <div className="input-group">
-            <label htmlFor="email">E-mail</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Digite seu e-mail"
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="password">Senha</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Digite sua senha"
-            />
-          </div>
-          <button type="submit" className="btn login-btn">
+          <label htmlFor="usuario">Usuário</label>
+          <input
+            type="text"
+            id="usuario"
+            placeholder="Digite seu usuário"
+            value={usuario}
+            onChange={(e) => setUsuario(e.target.value)}
+          />
+          <label htmlFor="senha">Senha</label>
+          <input
+            type="password"
+            id="senha"
+            placeholder="Digite sua senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+          />
+          <button type="submit" className="btn">
             Entrar
           </button>
         </form>
+        <div className="qr-section">
+          <p>Leia o QR Code no navegador do celular</p>
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?data=https://autobix.com.br&size=120x120"
+            alt="QR Code"
+          />
+        </div>
+        <div className="support">
+          Suporte: <a href="https://wa.me/5511991075415">(11) 99107-5415</a>
+        </div>
         <div className="social-icons">
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
             <img src="https://img.icons8.com/ios-filled/20/ffffff/facebook--v1.png" alt="Facebook" />
