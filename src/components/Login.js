@@ -38,7 +38,9 @@ const Login = () => {
 
   return (
     <div className="container">
-      <div className="logo">Auto<span>bix</span></div>
+      <div className="logo">
+        <span className="auto">Auto</span><span className="bix">bix</span>
+      </div>
       <div className="login-box">
         <div className="tabs">
           <button
