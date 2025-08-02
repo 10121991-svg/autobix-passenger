@@ -26,13 +26,11 @@ body {
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  color: #00ffcc;
+  text-shadow: 2px 2px 4px #035f63;
 }
 
-.logo .auto {
-  color: #035f63;
-}
-
+.logo .auto,
 .logo .bix {
   color: #00ffcc;
 }
@@ -148,7 +146,7 @@ input {
   }
 
   .logo {
-    font-size: calc(18px + 3vw);
+    font-size: calc(20px + 4vw);
     top: 50px;
   }
 
@@ -194,7 +192,7 @@ input {
 /* Suporte para telas muito pequenas */
 @media (max-width: 400px) {
   .logo {
-    font-size: calc(16px + 3vw);
+    font-size: calc(18px + 4vw);
     top: 40px;
   }
 
